@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Salvo Game</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="CSS/styles.css">
+</head>
+
+<body>
+<div id="app">
+    <div class="container"><br><br>
+
+        <div v-if="myPlayer == null">
+        <form id="login-form" onsubmit="return false">
+            <label>Username: <input id="username" type="text" name="username"></label>
+            <label>Password: <input id="password" type="password" name="password"></label>
+        </form>
+
+        <form id="logoin-form" onsubmit="return false">
+            <button @click="login()">Log in</button>        <button @click="register">Register</button>
+        </form><br><br>
+        </div>
+        <div v-else>
+           <h3>WELCOME TO SALVO GAME! {{myPlayer.name}}</h3>  <button @click="logout()">Log out</button>
+
+        </div>
+        <br><br>
+
+        <button v-if="myPlayer != null" @click="createGame()">Create Game</button>
+
+        <div class="row">
+        <div class="col-md">
+
+            <h2>GAMES</h2>
+    <ol class="list-group">
+             <template v-for="game in myGames">
+             <li class="list-group-item" v-if="game.gamePlayer.length > 1">{{game.date}} : {{game.gamePlayer[0].player.name}} vs {{game.gamePlayer[1].player.name}}<button v-if="checkGame(game)">Go to game</button></li>
+             <li  class="list-group-item" v-else> {{game.date}} : {{game.gamePlayer[0].player.name}}<button v-if="checkGame(game)">Go to game</button><button v-else-if="myPlayer != null">Join game</button></li>
+            </template>
+    </ol>
+
+        </div>
+
+        <div class="col-md">
+        <h2>SCORES</h2>
+    <table id="tablaShip" class="table table-bordered table-dark">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col"> Name </th>
+            <th scope="col"> Total </th>
+            <th scope="col"> Wins </th>
+            <th scope="col"> Looses </th>
+            <th scope="col"> Ties </th>
+        </tr>
+        </thead>
+        <tbody v-for="score in arrayLeaderPlayers">
+        <tr>
+            <td>{{score.name}}</td>
+            <td>{{score.total}}</td>
+            <td>{{score.wins}}</td>
+            <td>{{score.loose}}</td>
+            <td>{{score.ties}}</td>
+        </tr>
+        </tbody>
+    </table>
+        </div>
+        </div>
+    </div>
+
+</div>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script type="text/javascript" src="JS/games.js"></script>
+</body>
+
+</html>
+
+

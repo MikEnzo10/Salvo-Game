@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Ship Locations</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="CSS/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div id="appGame">
+    <div class="container">
+        <h1>Salvo Locations</h1>
+        <br>
+        <h3>Players</h3>
+
+
+            <p class="tituloGame" v-if="myJsonGame.gamePlayer <= 1">{{mostrarPlayer1()}}</p>
+            <p class="tituloGame" v-else-if="myJsonGame.gamePlayer">{{mostrarPlayer1()}}  VS  {{mostrarPlayer2()}}</p>
+
+        <br>
+    </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md">
+        <table id="tablaShip" class="table table-bordered table-dark">
+            <tr>
+                <td></td>
+                <td v-for="numero in arrayColumnas">{{numero}}</td>
+            </tr>
+            <tr v-for="letter in arrayFilas">
+                <td>{{letter}}</td>
+                <td v-for="number in arrayColumnas" v-bind:id="'ship' + letter + number"></td>
+            </tr>
+        </table>
+            </div>
+
+            <div class="col-md">
+
+        <table id="tablaSalvo" class="table table-bordered table-dark">
+            <tr>
+                <td></td>
+                <td v-for="numero in arrayColumnas">{{numero}}</td>
+            </tr>
+            <tr v-for="letter in arrayFilas">
+                <td>{{letter}}</td>
+                <td v-for="number in arrayColumnas" v-bind:id="'salvo' + letter + number"></td>
+            </tr>
+        </table>
+            </div>
+
+        </div>
+</div>
+</div>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script type="text/javascript" src="JS/game.js"></script>
+</body>
+</html>

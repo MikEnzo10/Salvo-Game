@@ -1,0 +1,36 @@
+.tituloGame{
+    font-family: Calibri;
+    font-size: 20px;
+    font-style: oblique;
+    color: black;
+    box-shadow: black 10px 10px 10px;
+    text-align: center;
+    border-radius: 10px 10px 10px 10px;
+    border: black dot-dash 1px;
+    text-shadow: white 1px 1px ;
+    letter-spacing: 4px;
+    font-stretch: condensed;
+    font-family: Rockwell;
+    width: 60%;
+    margin: auto;
+    font-size: 25px;
+}
+
+#tablaShip{
+    box-shadow: black 10px 10px 10px;
+}
+
+#tablaSalvo{
+    box-shadow: black 10px 10px 10px;
+}
+
+td {
+    border-radius: 5px 5px 5px 5px;
+    font-weight: bold;
+    font-family: Calibri;
+
+}
+
+.list-group{
+    box-shadow: black 10px 10px 10px;
+}
